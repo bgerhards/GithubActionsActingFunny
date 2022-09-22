@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - "test"
-  pull_request:
+  pull_request_target:
     branches:
       - "test"
-  workflow_dispatch:
+  # workflow_dispatch:
 
 jobs:
   example-job:
