@@ -1,0 +1,25 @@
+name: Prod Build & Deploy
+
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
+  workflow_dispatch:
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo hello
+        shell: bash
+  only-runs-on-push:
+    runs-on: ubuntu-latest
+    if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && success() }}
+    steps:
+      - name: Run build script
+        run: echo hello darkness my old friend
+        shell: bash
